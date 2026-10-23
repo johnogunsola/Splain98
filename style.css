@@ -1,0 +1,1149 @@
+:root {
+    --desktop: #008080;
+    --silver: #c0c0c0;
+    --navy: #000080
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Tahoma, "MS Sans Serif", Arial, sans-serif;
+    font-size: 12px;
+    background: var(--desktop);
+    color: #111;
+    overflow: hidden
+}
+
+button,
+a,
+input,
+textarea {
+    font: inherit
+}
+
+button {
+    color: inherit;
+    cursor: pointer;
+    border-radius: 0
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 1px dotted #000;
+    outline-offset: -4px
+}
+
+button:disabled {
+    color: #808080;
+    cursor: default
+}
+
+.raised,
+.window,
+.win-button {
+    background: var(--silver);
+    border: 0;
+    box-shadow: inset -1px -1px #000, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf
+}
+
+.win-button {
+    min-height: 27px;
+    padding: 5px 17px
+}
+
+.raised:active,
+.win-button:active {
+    box-shadow: inset 1px 1px #000, inset -1px -1px #fff, inset 2px 2px #808080;
+    padding-top: 6px
+}
+
+.sunken {
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #fff, inset 2px 2px #000, inset -2px -2px #dfdfdf
+}
+
+svg {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    shape-rendering: crispEdges
+}
+
+#desktop {
+    position: relative;
+    height: calc(100dvh - 38px);
+    min-height: 260px;
+    overflow: hidden
+}
+
+.desktop-icons {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    display: grid;
+    grid-auto-rows: 87px;
+    z-index: 1
+}
+
+.desktop-icon {
+    width: 88px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 7px;
+    background: none;
+    border: 1px solid transparent;
+    padding: 7px 2px;
+    color: #fff;
+    text-shadow: 1px 1px #004343
+}
+
+.desktop-icon svg {
+    width: 36px;
+    height: 36px;
+    filter: drop-shadow(1px 1px #004b4b)
+}
+
+.desktop-icon span {
+    padding: 2px 3px;
+    line-height: 15px
+}
+
+.desktop-icon:focus span {
+    background: var(--navy);
+    outline: 1px dotted white
+}
+
+.desktop-icon:hover {
+    background: #ffffff0c
+}
+
+.desktop-brand {
+    position: absolute;
+    right: 5.6%;
+    top: 8%;
+    color: #006c6c;
+    user-select: none;
+    text-align: right
+}
+
+.desktop-brand>span {
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #57aaaa
+}
+
+.desktop-brand strong {
+    display: block;
+    font-size: 68px;
+    font-weight: 700;
+    letter-spacing: -5px;
+    text-shadow: 1px 1px #269393
+}
+
+.desktop-brand strong span {
+    font-weight: 400
+}
+
+.desktop-brand small {
+    color: #53a4a4;
+    letter-spacing: 1px;
+    font-size: 10px
+}
+
+.desktop-tip {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    text-align: right;
+    color: #a4cece;
+    font-size: 11px;
+    line-height: 22px
+}
+
+.desktop-tip span {
+    color: #65b1b1
+}
+
+.window {
+    position: absolute;
+    padding: 3px;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100% - 12px)
+}
+
+.window.active .titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0)
+}
+
+.titlebar {
+    height: 25px;
+    min-height: 25px;
+    background: #808080;
+    display: flex;
+    align-items: center;
+    padding: 3px 3px 3px 4px;
+    color: #fff;
+    gap: 5px;
+    user-select: none;
+    touch-action: none;
+    cursor: move;
+    font-weight: bold
+}
+
+.titlebar>svg {
+    width: 17px;
+    height: 17px
+}
+
+.titlebar .title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.window-controls {
+    display: flex;
+    gap: 2px
+}
+
+.window-controls button {
+    width: 18px;
+    height: 17px;
+    padding: 0;
+    line-height: 14px;
+    font: bold 14px Arial;
+    color: #000
+}
+
+.menu-bar {
+    display: flex;
+    gap: 0;
+    height: 29px;
+    align-items: center;
+    border-bottom: 1px solid #808080;
+    box-shadow: 0 1px #fff;
+    padding-left: 3px
+}
+
+.menu-bar button {
+    border: 0;
+    background: none;
+    padding: 5px 8px
+}
+
+.menu-bar button:hover {
+    background: #000080;
+    color: #fff
+}
+
+.menu-bar button:first-letter {
+    text-decoration: underline
+}
+
+.window-body {
+    min-height: 0;
+    overflow: auto;
+    flex: 1
+}
+
+.statusbar {
+    height: 22px;
+    min-height: 22px;
+    margin: 3px 1px 0;
+    display: flex;
+    gap: 3px;
+    color: #333
+}
+
+.statusbar span {
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #fff;
+    padding: 4px 6px;
+    flex: 1;
+    font-size: 11px
+}
+
+.statusbar span:last-child {
+    flex: 0 0 108px
+}
+
+.welcome-wrap {
+    display: grid;
+    grid-template-columns: 182px 1fr;
+    background: #fff;
+    min-height: 365px
+}
+
+.welcome-art {
+    position: relative;
+    overflow: hidden;
+    background: #000080;
+    color: #fff;
+    padding: 29px 20px;
+    display: flex;
+    flex-direction: column
+}
+
+.welcome-art:after {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border: 1px solid #ffffff26;
+    transform: rotate(-30deg);
+    left: -75px;
+    top: 200px;
+    box-shadow: 0 0 0 24px #ffffff08, 0 0 0 48px #ffffff08
+}
+
+.welcome-art .big-flag {
+    width: 106px;
+    height: 106px;
+    margin: 1px auto 21px;
+    filter: drop-shadow(5px 5px #000049)
+}
+
+.welcome-art strong {
+    font-size: 27px;
+    letter-spacing: -1px
+}
+
+.welcome-art strong span {
+    font-weight: 400
+}
+
+.welcome-art p {
+    font-size: 11px;
+    color: #b5c8ff;
+    line-height: 1.8;
+    margin-top: 8px
+}
+
+.welcome-art .edition {
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: auto;
+    z-index: 1;
+    padding-top: 30px
+}
+
+.welcome-content {
+    padding: 30px 31px 24px
+}
+
+.eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    color: #808080;
+    margin: 0 0 13px
+}
+
+.welcome-content h1 {
+    font-size: 28px;
+    letter-spacing: -1px;
+    line-height: 1.12;
+    margin: 0 0 13px;
+    font-weight: 700
+}
+
+.welcome-content h1 span {
+    color: #000080
+}
+
+.intro {
+    font-size: 12px;
+    line-height: 1.75;
+    color: #555;
+    max-width: 370px;
+    margin-bottom: 22px
+}
+
+.welcome-actions {
+    display: grid;
+    gap: 1px
+}
+
+.welcome-link {
+    background: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border: 0;
+    border-top: 1px solid #e7e7e7;
+    padding: 12px 1px
+}
+
+.welcome-link:hover {
+    background: #f0f0ff
+}
+
+.welcome-link svg {
+    width: 28px;
+    height: 28px
+}
+
+.welcome-link div {
+    flex: 1
+}
+
+.welcome-link b {
+    display: block;
+    font-size: 12px;
+    color: #000080;
+    margin-bottom: 4px
+}
+
+.welcome-link small {
+    font-size: 10px;
+    color: #666
+}
+
+.welcome-link .arrow {
+    font: 16px Arial;
+    color: #888
+}
+
+.welcome-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 11px 7px;
+    gap: 10px
+}
+
+.welcome-bottom label {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 5px
+}
+
+.welcome-bottom input {
+    accent-color: #000080
+}
+
+.readme {
+    padding: 18px 20px;
+    background: #ffffdf;
+    font: 12px/1.8 "Courier New", monospace;
+    min-height: 154px
+}
+
+.readme p {
+    margin: 0 0 12px
+}
+
+.readme .note-title {
+    font-weight: bold
+}
+
+.readme .note-small {
+    font-size: 10px;
+    color: #777
+}
+
+.taskbar {
+    height: 38px;
+    padding: 4px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--silver);
+    box-shadow: inset 0 1px #fff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 9999
+}
+
+#start {
+    height: 29px;
+    display: flex;
+    align-items: center;
+    padding: 3px 7px;
+    gap: 5px;
+    font-size: 14px
+}
+
+#start svg {
+    height: 23px;
+    width: 23px
+}
+
+.task-separator {
+    height: 27px;
+    width: 2px;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #fff;
+    margin: 0 2px
+}
+
+.quick-launch {
+    border: 0;
+    background: none;
+    padding: 2px 4px;
+    height: 29px
+}
+
+.quick-launch svg {
+    width: 21px;
+    height: 21px
+}
+
+#tasks {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+    overflow: hidden
+}
+
+.task {
+    height: 28px;
+    min-width: 60px;
+    width: 172px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.task svg {
+    width: 17px;
+    height: 17px
+}
+
+.task.selected {
+    background: #dedede;
+    box-shadow: inset 1px 1px #000, inset -1px -1px #fff, inset 2px 2px #808080;
+    font-weight: 700
+}
+
+.tray {
+    height: 28px;
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #fff;
+    padding: 2px 11px 2px 7px;
+    flex-shrink: 0
+}
+
+.tray time {
+    font-size: 11px;
+    min-width: 51px
+}
+
+.tray button {
+    border: 0;
+    background: none;
+    padding: 0;
+    font-size: 17px;
+    position: relative
+}
+
+.tray button span {
+    font: 12px Arial;
+    color: #800000
+}
+
+.tray-light {
+    width: 7px;
+    height: 7px;
+    background: #008000;
+    box-shadow: 1px 1px #fff
+}
+
+#start-menu {
+    position: fixed;
+    bottom: 38px;
+    left: 3px;
+    z-index: 10000;
+    width: 254px;
+    padding: 3px;
+    display: flex
+}
+
+#start-menu[hidden] {
+    display: none
+}
+
+.start-rail {
+    width: 31px;
+    background: linear-gradient(#000080, #1084d0);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 12px 5px;
+    color: #c0c0c0;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: -1px
+}
+
+.start-rail span {
+    color: #fff;
+    font-weight: 400
+}
+
+.start-items {
+    flex: 1
+}
+
+.start-user {
+    padding: 13px 12px;
+    font-size: 10px;
+    color: #555
+}
+
+.start-items button {
+    width: 100%;
+    border: 0;
+    background: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px
+}
+
+.start-items button svg {
+    width: 25px;
+    height: 25px
+}
+
+.start-items button span {
+    margin-left: auto;
+    font-size: 9px
+}
+
+.start-items button:hover {
+    background: #000080;
+    color: #fff
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #fff;
+    margin: 3px 4px
+}
+
+.content-pad {
+    padding: 24px;
+    background: #fff;
+    line-height: 1.75
+}
+
+.content-pad h2 {
+    color: #000080;
+    font-size: 22px;
+    margin: 0 0 12px
+}
+
+.content-pad h3 {
+    font-size: 13px;
+    margin-top: 22px
+}
+
+.content-pad p {
+    color: #444
+}
+
+.text-link {
+    color: #000080
+}
+
+.profile-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px
+}
+
+.profile-heading svg {
+    width: 56px;
+    height: 56px
+}
+
+.profile-heading h2 {
+    margin: 0
+}
+
+.profile-heading small {
+    color: #777
+}
+
+.skill-row {
+    display: grid;
+    grid-template-columns: 115px 1fr;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd
+}
+
+.skill-row span {
+    color: #666
+}
+
+.address {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px
+}
+
+.address .sunken {
+    background: #fff;
+    padding: 4px 7px;
+    flex: 1
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    background: white;
+    padding: 25px 17px;
+    min-height: 190px
+}
+
+.project-item {
+    background: none;
+    border: 1px solid transparent;
+    padding: 12px 4px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center
+}
+
+.project-item svg {
+    width: 42px;
+    height: 42px
+}
+
+.project-item:hover,
+.project-item:focus {
+    background: #eeeefc;
+    border: 1px dotted #000080
+}
+
+.project-item small {
+    font-size: 10px;
+    color: #777
+}
+
+.project-detail {
+    padding: 20px;
+    background: #fff;
+    line-height: 1.8
+}
+
+.project-detail h2 {
+    color: #000080;
+    font-size: 20px
+}
+
+.project-detail .win-button {
+    display: inline-block;
+    color: #111;
+    text-decoration: none;
+    margin-top: 12px
+}
+
+.tag {
+    display: inline-block;
+    padding: 3px 8px;
+    background: #eee;
+    margin: 0 3px 4px 0;
+    font-size: 10px
+}
+
+.notepad-input {
+    width: 100%;
+    height: 240px;
+    resize: none;
+    border: 0;
+    outline: none;
+    padding: 13px;
+    font: 13px/1.7 "Courier New", monospace;
+    background: #fffef2
+}
+
+.settings {
+    padding: 20px
+}
+
+.settings fieldset {
+    border: 1px solid #808080;
+    margin: 10px 0 20px;
+    padding: 16px
+}
+
+.swatches {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px
+}
+
+.swatch {
+    width: 39px;
+    height: 29px;
+    border: 2px solid #fff;
+    outline: 1px solid #808080
+}
+
+.settings label {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.display-preview {
+    height: 110px;
+    max-width: 180px;
+    margin: 5px auto 20px;
+    border: 9px solid #888;
+    box-shadow: 0 0 0 2px #000, inset 0 0 0 2px #000;
+    background: var(--desktop);
+    display: grid;
+    place-items: center;
+    color: #fff
+}
+
+.connection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    margin: 20px 0
+}
+
+.connection svg {
+    height: 40px;
+    width: 40px
+}
+
+.connection a {
+    color: #000080;
+    font-weight: bold
+}
+
+.empty-bin {
+    text-align: center;
+    padding: 38px 20px;
+    background: #fff
+}
+
+.empty-bin svg {
+    width: 48px;
+    height: 48px
+}
+
+.empty-bin p {
+    color: #777
+}
+
+.window.maximized {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important
+}
+
+.crt:after {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    background: repeating-linear-gradient(transparent 0 2px, #00000012 2px 3px)
+}
+
+#off-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 30000;
+    background: #000;
+    color: #df9028;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px
+}
+
+#off-screen[hidden] {
+    display: none
+}
+
+#off-screen>svg {
+    width: 70px;
+    height: 70px
+}
+
+#off-screen h1 {
+    font: 22px "Courier New", monospace;
+    margin-top: 30px
+}
+
+#off-screen p {
+    font: 12px "Courier New", monospace
+}
+
+#off-screen button {
+    margin-top: 25px;
+    padding: 10px 20px
+}
+
+.system-hint {
+    font-size: 10px;
+    color: #666;
+    line-height: 1.6
+}
+
+@media(min-width:1500px) {
+    .desktop-icons {
+        left: 25px;
+        top: 25px;
+        grid-auto-rows: 96px
+    }
+
+    .desktop-brand {
+        right: 9%;
+        top: 12%
+    }
+}
+
+@media(max-width:800px) {
+    .desktop-brand {
+        top: 5%;
+        right: 6%
+    }
+
+    .desktop-brand strong {
+        font-size: 50px
+    }
+
+    .desktop-brand small {
+        display: none
+    }
+
+    .desktop-icons {
+        left: 7px;
+        top: 9px;
+        grid-auto-rows: 78px
+    }
+
+    .desktop-icon {
+        width: 77px;
+        font-size: 11px
+    }
+
+    .desktop-icon svg {
+        width: 31px;
+        height: 31px
+    }
+
+    .window {
+        max-width: calc(100% - 100px)
+    }
+
+    .welcome-wrap {
+        grid-template-columns: 135px 1fr;
+        min-height: 330px
+    }
+
+    .welcome-art {
+        padding: 25px 14px
+    }
+
+    .welcome-art .big-flag {
+        width: 85px;
+        height: 85px
+    }
+
+    .welcome-art strong {
+        font-size: 23px
+    }
+
+    .welcome-content {
+        padding: 24px 20px
+    }
+
+    .welcome-content h1 {
+        font-size: 24px
+    }
+
+    .welcome-link small {
+        display: none
+    }
+
+    .desktop-tip {
+        font-size: 10px;
+        bottom: 18px;
+        right: 18px
+    }
+
+    .task {
+        width: 145px
+    }
+
+    .welcome-bottom {
+        font-size: 10px
+    }
+}
+
+@media(max-width:560px) {
+    .window {
+        max-width: calc(100% - 18px)
+    }
+
+    .welcome-wrap {
+        grid-template-columns: 1fr;
+        min-height: auto
+    }
+
+    .welcome-art {
+        padding: 13px 17px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px
+    }
+
+    .welcome-art .big-flag {
+        width: 44px;
+        height: 44px;
+        margin: 0
+    }
+
+    .welcome-art strong {
+        font-size: 25px
+    }
+
+    .welcome-art p,
+    .welcome-art .edition {
+        display: none
+    }
+
+    .welcome-content {
+        padding: 20px
+    }
+
+    .welcome-content h1 {
+        font-size: 25px
+    }
+
+    .welcome-content .intro {
+        margin-bottom: 15px;
+        font-size: 11px
+    }
+
+    .welcome-link {
+        padding: 10px 0
+    }
+
+    .welcome-bottom label {
+        font-size: 9px
+    }
+
+    .welcome-bottom .win-button {
+        padding: 5px 10px
+    }
+
+    .desktop-brand>span {
+        font-size: 7px;
+        letter-spacing: 2px
+    }
+
+    .desktop-brand strong {
+        font-size: 42px
+    }
+
+    .tray {
+        padding: 3px 7px;
+        gap: 6px
+    }
+
+    .tray-light,
+    .quick-launch,
+    .task-separator {
+        display: none
+    }
+
+    .task {
+        width: 110px;
+        font-size: 10px;
+        min-width: 35px
+    }
+
+    .task svg {
+        width: 14px;
+        height: 14px
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr
+    }
+
+    .project-item {
+        flex-direction: row;
+        text-align: left
+    }
+
+    .project-item small {
+        margin-left: auto
+    }
+
+    .content-pad {
+        padding: 20px
+    }
+
+    .skill-row {
+        grid-template-columns: 95px 1fr
+    }
+
+    .desktop-tip {
+        display: none
+    }
+}
+
+.file-menu {
+    position: absolute;
+    left: 4px;
+    top: 55px;
+    z-index: 50;
+    padding: 3px;
+    min-width: 170px
+}
+
+.file-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: 0;
+    background: none;
+    padding: 8px 14px
+}
+
+.file-menu button:hover {
+    background: #000080;
+    color: white
+}
